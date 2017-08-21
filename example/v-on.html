@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on 实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on 实例</h1>
+    <hr>
+    <div id="app">
+        <!--
+            利用 v-text 减少渲染过程暴露 {{xxx}}  
+            也可以写成{{score}}
+        -->
+        本场比赛得分:&nbsp;&nbsp;<span v-text='score'></span> 
+        <div>
+            <br>
+            <!-- v-on===@ 简写  -->
+            <button v-on:click='add'>加分</button>
+            <button @click='minus'>减分</button>
+            <br>
+            <br>
+            <!--
+                v-model  绑定数据源
+                enter 可以用 键盘码 代替  enter=13
+                F1 不可用  被浏览器占用 其他 都可以用
+            -->
+            <input type="text" v-on:keyup.enter='onEnter' v-model='score2'>
+        </div>  
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                score:1,
+                score2:2
+            },
+            methods:{
+                 add:function(){
+                     this.score++;
+                 },
+                minus:function(){
+                    //做if判断分数不小于0 
+                   if(this.score>=1){
+                       this.score--;
+                   }else{
+                       this.score==0;
+                   }
+                },
+                onEnter:function(){
+                    //parseInt 字符串 转换 
+                    this.score=this.score+ parseInt(this.score2);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

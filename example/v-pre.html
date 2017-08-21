@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-pre实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h3>v-pre v-cloak v-once 实例</h3>
+    <hr>
+    <div id="app">
+        <!--渲染  -->
+        <div>{{message}}</div>
+        <!--v-pre 不做渲染  -->
+        <div v-pre>{{message}}</div>
+        <!--v-clock 等页面上的 所有 DOM 都渲染完后才加载  -->
+        <div v-cloak>{{message}}</div>
+        <!--v-once 只渲染第一次的  -->
+        <div v-once>{{message}}</div>
+         <div>
+             <input type="text" v-model='message'>
+         </div>
+        <div>{{message}}</div>    
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好！'
+            }
+        })
+    </script>
+</body>
+</html>
